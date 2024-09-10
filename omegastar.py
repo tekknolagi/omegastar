@@ -45,8 +45,8 @@ def bisect_impl(command, fixed, jitlist, indent=""):
 def run_bisect(command, jitlist):
     logging.info("Verifying jit-list")
     if command(jitlist):
-        sys.exit("Command succeeded with full jit-list")
+        raise ValueError("Command succeeded with full jit-list")
     if not command([]):
-        sys.exit("Command failed with empty jit-list")
+        raise ValueError("Command failed with empty jit-list")
 
     return bisect_impl(command, [], jitlist)
