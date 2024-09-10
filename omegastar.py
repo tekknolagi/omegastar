@@ -3,13 +3,6 @@
 import logging
 
 
-# Return two halves of the given list. For odd-length lists, the second half
-# will be larger.
-def split_list(items):
-    half = len(items) // 2
-    return items[0:half], items[half:]
-
-
 # Attempt to reduce the `items` argument as much as possible, returning the
 # shorter version. `fixed` will always be used as part of the items when
 # running `command`.
@@ -18,10 +11,14 @@ def split_list(items):
 def bisect_impl(command, fixed, items, indent=""):
     logging.info(f"{indent}step fixed[{len(fixed)}] and items[{len(items)}]")
 
-    while len(items) > 1:
+    while items:
         logging.info(f"{indent}{len(fixed) + len(items)} candidates")
 
-        left, right = split_list(items)
+        # Return two halves of the given list. For odd-length lists, the second
+        # half will be larger.
+        half = len(items) // 2
+        left = items[0:half]
+        right = items[half:]
         if not command(fixed + left):
             items = left
             continue
