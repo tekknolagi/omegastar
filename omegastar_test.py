@@ -1,3 +1,4 @@
+# Copyright (c) Maxwell Bernstein
 import omegastar
 import unittest
 

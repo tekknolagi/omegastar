@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 # Copyright (c) Meta Platforms, Inc. and affiliates.
-
+# Copyright (c) Maxwell Bernstein
 import logging
 
 
