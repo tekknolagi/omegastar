@@ -35,6 +35,14 @@ class BisectTests(unittest.TestCase):
 
         self.assertEqual(omegastar.run_bisect(command, [1, 2, 3, 4, 5]), [1, 3, 5])
 
+    def test_bisect_n(self):
+        def command(items):
+            return not (1 in items and 3 in items and 5 in items)
+
+        self.assertEqual(
+            omegastar.run_bisect(command, list(range(-1_000_000, 1_000_000))), [1, 3, 5]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
