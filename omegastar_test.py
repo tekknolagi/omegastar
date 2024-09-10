@@ -37,6 +37,7 @@ class BisectTests(unittest.TestCase):
 
     def test_bisect_n(self):
         n_steps = 0
+
         def command(items):
             nonlocal n_steps
             n_steps += 1
