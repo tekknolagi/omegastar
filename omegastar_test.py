@@ -3,35 +3,35 @@ import unittest
 
 
 class BisectTests(unittest.TestCase):
-    def test_succeeding_with_full_jitlist_raises_value_error(self):
-        def command(jitlist):
+    def test_succeeding_with_full_items_raises_value_error(self):
+        def command(items):
             return True
 
-        with self.assertRaisesRegex(ValueError, "with full jit-list"):
+        with self.assertRaisesRegex(ValueError, "with full items"):
             omegastar.run_bisect(command, [1, 2, 3])
 
-    def test_failing_with_empty_jitlist_raises_value_error(self):
-        def command(jitlist):
+    def test_failing_with_empty_items_raises_value_error(self):
+        def command(items):
             return False
 
-        with self.assertRaisesRegex(ValueError, "with empty jit-list"):
+        with self.assertRaisesRegex(ValueError, "with empty items"):
             omegastar.run_bisect(command, [1, 2, 3])
 
     def test_bisect_one(self):
-        def command(jitlist):
-            return 2 not in jitlist
+        def command(items):
+            return 2 not in items
 
         self.assertEqual(omegastar.run_bisect(command, [1, 2, 3, 4, 5]), [2])
 
     def test_bisect_two(self):
-        def command(jitlist):
-            return not (1 in jitlist and 5 in jitlist)
+        def command(items):
+            return not (1 in items and 5 in items)
 
         self.assertEqual(omegastar.run_bisect(command, [1, 2, 3, 4, 5]), [1, 5])
 
     def test_bisect_three(self):
-        def command(jitlist):
-            return not (1 in jitlist and 3 in jitlist and 5 in jitlist)
+        def command(items):
+            return not (1 in items and 3 in items and 5 in items)
 
         self.assertEqual(omegastar.run_bisect(command, [1, 2, 3, 4, 5]), [1, 3, 5])
 
