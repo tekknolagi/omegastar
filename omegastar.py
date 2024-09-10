@@ -2,8 +2,6 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 
 import logging
-import os
-import sys
 
 
 # Return two halves of the given list. For odd-length lists, the second half
