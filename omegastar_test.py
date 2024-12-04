@@ -41,6 +41,8 @@ class BisectTests(unittest.TestCase):
 
         def command(items):
             nonlocal n_steps
+            if n_steps > 69:
+                raise ValueError("unexpectedly too much work")
             n_steps += 1
             return not (-5 in items and 1 in items and 3 in items and 5 in items)
 
