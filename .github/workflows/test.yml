@@ -8,13 +8,16 @@ on:
 
 jobs:
   do_the_build_please:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install python3.8
-      run: sudo apt install -y python3.8
+    - name: Install python, ruby
+      run: sudo apt install -y python3.12 ruby
 
-    - name: Run tests
+    - name: Run Python tests
       run: python3 omegastar_test.py
+
+    - name: Run Ruby tests
+      run: ruby omegastar_test.rb
