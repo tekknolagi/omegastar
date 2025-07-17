@@ -2,6 +2,11 @@ require 'logger'
 
 $logger = Logger.new($stdout)
 
+# Attempt to reduce the `items` argument as much as possible, returning the
+# shorter version. `fixed` will always be used as part of the items when
+# running `command`.
+# `command` should return True if the command succeeded (the failure did not
+# reproduce) and False if the command failed (the failure reproduced).
 def bisect_impl(command, fixed, items, indent="")
   $logger.info("#{indent}step fixed[#{fixed.length}] and items[#{items.length}]")
   while items.length > 1
